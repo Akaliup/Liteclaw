@@ -10,7 +10,7 @@
 
 本课要拿下的四个结论：
 
-1. 内置工具不是额外服务，而是**进程内工具**：在 Runner 里用一份中立的工具定义（名称、描述、Zod 形状、处理器）构造数组，再适配成 Pi 的 `ToolDefinition`，挂上 `mcp__miniclaw__` 前缀。
+1. 内置工具不是额外服务，而是**进程内工具**：在 Runner 里用一份中立的工具定义（名称、描述、Zod 形状、处理器）构造数组，再适配成 Pi 的 `ToolDefinition`，挂上 `mcp__liteclaw__` 前缀。
 2. 有副作用的工具**不在 Runner 里落地**：它们把一条请求 JSON 写进 IPC 的 tasks 目录，然后按 `requestId` 轮询结果文件；真正的发送、落库、排任务在宿主完成。
 3. 请求写入是原子的（临时文件 + `rename`，权限 `0o600`），轮询只吞 `ENOENT`，其它错误立刻抛——这两条一起保证「读到的结果一定属于本次请求，且不会把半截文件当成结果」。
 4. 工具结果的形状要迁就模型：统一包成 text/image 内容块；参数在校验层和执行层各校验一次，坏 schema 不能让运行起不来。
@@ -47,7 +47,7 @@ Runner 读到结果 → 包装 content 返回模型
 
 6. 适配层：[pi-tools.ts](../../../container/agent-runner/src/runtime/pi/pi-tools.ts) 的 `adaptClaudeMcpToolsToPi` 把 Zod 形状用 `z.toJSONSchema` 转成 JSON Schema、删掉 `$schema`、`Type.Unsafe` 包一层塞给 Pi；`prepareArguments` 再 `z.object(...).parse(args)` 一次；`execute` 把返回值转成 text/image 内容块并把原始结果放进 `details`。schema 转换失败时退回 `Type.Object({})`，但参数校验仍在执行层生效。
 
-7. 白名单联动：[pi-index.ts](../../../container/agent-runner/src/pi-index.ts) 的 `DEFAULT_ALLOWED_TOOLS` 里写的是通配 `mcp__miniclaw__*`，`PiRuntimeAdapter` 在组装工具列表时把它展开成实际的自定义工具名，再与内置工具别名（`bash`/`read`/`edit`/`write`/`find`/`grep`/`ls`/`Agent`…）一起过滤。所以「加一个工具」不需要改白名单，删一个工具也不会留下悬空名字。
+7. 白名单联动：[pi-index.ts](../../../container/agent-runner/src/pi-index.ts) 的 `DEFAULT_ALLOWED_TOOLS` 里写的是通配 `mcp__liteclaw__*`，`PiRuntimeAdapter` 在组装工具列表时把它展开成实际的自定义工具名，再与内置工具别名（`bash`/`read`/`edit`/`write`/`find`/`grep`/`ls`/`Agent`…）一起过滤。所以「加一个工具」不需要改白名单，删一个工具也不会留下悬空名字。
 
 8. 去重：[ipc-send-dedup.ts](../../../src/ipc-send-dedup.ts) 用 `sourceGroup|chatJid|md5(text)` 作键，TTL 10 分钟、上限 500 条；关键在于它**只在会话处于重试状态时才判定为重复**。
 
@@ -81,7 +81,7 @@ Runner 读到结果 → 包装 content 返回模型
 
 - 写入原子性：`.tmp` + `rename`，`mode 0o600`，`wx` 不覆盖。
 - 轮询：500ms；默认 30s，飞书能力 120s；只吞 `ENOENT`。
-- 命名空间 `mcp__miniclaw__*`，白名单用通配展开，不逐个维护。
+- 命名空间 `mcp__liteclaw__*`，白名单用通配展开，不逐个维护。
 - 去重键 `sourceGroup|chatJid|md5(text)`，TTL 10 分钟、上限 500，且仅重试期生效。
 - 工具结果统一 text/image 内容块；原始返回值进 `details` 供调试。
 

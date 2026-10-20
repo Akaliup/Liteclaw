@@ -12,13 +12,17 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
     />
-    <meta name="theme-color" content="#0d9488" />
+    <meta name="theme-color" content="#3064f4" />
+    <meta
+      name="description"
+      content="LiteClaw — 跨境电商多店铺协同运营的数字员工平台：岗位 Agent、店铺工作区隔离、Multi-Model 评测与 ProviderPool 运行降级。"
+    />
 
     <!-- PWA iOS Support -->
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Miniclaw" />
+    <meta name="apple-mobile-web-app-title" content="LiteClaw" />
     <link
       rel="apple-touch-icon"
       href="%BASE_URL%icons/apple-touch-icon-180.png"
@@ -47,15 +51,15 @@
       });
     </script>
 
-    <title>Miniclaw</title>
+    <title>LiteClaw · 跨境电商数字员工平台</title>
   </head>
   <body>
     <script>
       (function () {
         var d = document.documentElement,
           s =
-            localStorage.getItem('miniclaw-theme') ||
-            localStorage.getItem('miniclaw-theme');
+            localStorage.getItem('liteclaw-theme') ||
+            localStorage.getItem('liteclaw-theme');
         if (
           s === 'dark' ||
           (s === 'system' &&
@@ -63,13 +67,13 @@
         )
           d.classList.add('dark');
         var c =
-          localStorage.getItem('miniclaw-color-scheme') ||
-          localStorage.getItem('miniclaw-color-scheme');
+          localStorage.getItem('liteclaw-color-scheme') ||
+          localStorage.getItem('liteclaw-color-scheme');
         if (c === 'orange') d.classList.add('theme-orange');
         if (c === 'neutral') d.classList.add('theme-neutral');
         if (
-          (localStorage.getItem('miniclaw-font-style') ||
-            localStorage.getItem('miniclaw-font-style')) === 'anthropic'
+          (localStorage.getItem('liteclaw-font-style') ||
+            localStorage.getItem('liteclaw-font-style')) === 'anthropic'
         )
           d.classList.add('font-anthropic');
       })();

@@ -143,8 +143,8 @@
 }
 
 /* =====================================================
-   Design Token values — Teal theme (classic Miniclaw)
-   Primary: #0d9488 (Teal) | Base: Slate
+   Design Token values — Teal theme (classic LiteClaw)
+   Primary: #3064f4 (Teal) | Base: Slate
    ===================================================== */
 :root {
   /* shadcn/ui semantic tokens */
@@ -154,33 +154,33 @@
   --card-foreground: #0f172a;
   --popover: #ffffff;
   --popover-foreground: #0f172a;
-  --primary: #0d9488;
+  --primary: #3064f4;
   --primary-foreground: #ffffff;
   --secondary: #f1f5f9;
   --secondary-foreground: #0f172a;
   --muted: #f1f5f9;
   --muted-foreground: #64748b;
-  --accent: #f0fdfa;
-  --accent-foreground: #134e4a;
+  --accent: #eff4ff;
+  --accent-foreground: #1e3a8a;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
   --border: #e2e8f0;
   --input: #e2e8f0;
-  --ring: #0d9488;
+  --ring: #3064f4;
   --radius: 0.625rem;
 
   /* Brand color scale (Teal) */
-  --brand-50: #f0fdfa;
-  --brand-100: #ccfbf1;
-  --brand-200: #99f6e4;
-  --brand-300: #5eead4;
-  --brand-400: #2dd4bf;
-  --brand-500: #0d9488;
-  --brand-600: #0f766e;
-  --brand-700: #115e59;
+  --brand-50: #eff4ff;
+  --brand-100: #dbe6fe;
+  --brand-200: #bfd3fe;
+  --brand-300: #93b4fd;
+  --brand-400: #6090fa;
+  --brand-500: #3064f4;
+  --brand-600: #1f4fe0;
+  --brand-700: #1b3fb8;
 
   /* Chart colors */
-  --chart-1: #0d9488;
+  --chart-1: #3064f4;
   --chart-2: #d97706;
   --chart-3: #4c6ef5;
   --chart-4: #9333ea;
@@ -189,12 +189,12 @@
   /* Sidebar */
   --sidebar-background: #f8fafc;
   --sidebar-foreground: #0f172a;
-  --sidebar-primary: #0d9488;
+  --sidebar-primary: #3064f4;
   --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #f1f5f9;
   --sidebar-accent-foreground: #0f172a;
   --sidebar-border: #e2e8f0;
-  --sidebar-ring: #0d9488;
+  --sidebar-ring: #3064f4;
 
   /* Feedback colors */
   --success: #16a34a;
@@ -209,8 +209,8 @@
 
   /* Code colors */
   --code-block-bg: #f6f8fa;
-  --inline-code-bg: rgba(13, 148, 136, 0.1);
-  --inline-code-text: #0d9488;
+  --inline-code-bg: rgba(48, 100, 244, 0.1);
+  --inline-code-text: #3064f4;
 
   /* AI message card shadow */
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
@@ -483,28 +483,28 @@ html.font-anthropic .font-mono {
   --card-foreground: #e2e8f0;
   --popover: #1e293b;
   --popover-foreground: #e2e8f0;
-  --primary: #2dd4bf;
+  --primary: #6090fa;
   --primary-foreground: #0f172a;
   --secondary: #1e293b;
   --secondary-foreground: #e2e8f0;
   --muted: #1e293b;
   --muted-foreground: #94a3b8;
-  --accent: #134e4a;
-  --accent-foreground: #99f6e4;
+  --accent: #1e3a8a;
+  --accent-foreground: #bfd3fe;
   --destructive: #f87171;
   --destructive-foreground: #ffffff;
   --border: #334155;
   --input: #334155;
-  --ring: #2dd4bf;
+  --ring: #6090fa;
 
   --sidebar-background: #0f172a;
   --sidebar-foreground: #cbd5e1;
-  --sidebar-primary: #2dd4bf;
+  --sidebar-primary: #6090fa;
   --sidebar-primary-foreground: #0f172a;
   --sidebar-accent: #1e293b;
   --sidebar-accent-foreground: #cbd5e1;
   --sidebar-border: #1e293b;
-  --sidebar-ring: #2dd4bf;
+  --sidebar-ring: #6090fa;
 
   --success: #4ade80;
   --success-bg: #14532d;
@@ -517,7 +517,7 @@ html.font-anthropic .font-mono {
 
   --code-block-bg: #22272e;
   --inline-code-bg: rgba(45, 212, 191, 0.15);
-  --inline-code-text: #2dd4bf;
+  --inline-code-text: #6090fa;
 
   --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 
@@ -533,15 +533,15 @@ html.font-anthropic .font-mono {
   --glass-inner-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.06);
   /* Brand color scale (Teal) — inverted for dark mode */
   --brand-50: #042f2e;
-  --brand-100: #134e4a;
-  --brand-200: #115e59;
-  --brand-300: #0f766e;
-  --brand-400: #0d9488;
+  --brand-100: #1e3a8a;
+  --brand-200: #1b3fb8;
+  --brand-300: #1f4fe0;
+  --brand-400: #3064f4;
   --brand-500: #14b8a6;
-  --brand-600: #2dd4bf;
-  --brand-700: #5eead4;
+  --brand-600: #6090fa;
+  --brand-700: #93b4fd;
 
-  --chart-1: #2dd4bf;
+  --chart-1: #6090fa;
   --chart-2: #fbbf24;
   --chart-3: #818cf8;
   --chart-4: #c084fc;
@@ -877,10 +877,10 @@ pre code.hljs {
 }
 
 .floating-nav-item.active {
-  background: rgba(13, 148, 136, 0.15);
+  background: rgba(48, 100, 244, 0.15);
   color: var(--primary);
   box-shadow:
-    0 2px 8px rgba(13, 148, 136, 0.15),
+    0 2px 8px rgba(48, 100, 244, 0.15),
     var(--glass-inner-shadow);
   transition: all 350ms cubic-bezier(0.34, 1.56, 0.64, 1);
   transform: scale(1.08);
@@ -893,7 +893,7 @@ pre code.hljs {
   border-radius: 9999px;
   background: radial-gradient(
     circle,
-    rgba(13, 148, 136, 0.2) 0%,
+    rgba(48, 100, 244, 0.2) 0%,
     transparent 70%
   );
   animation: glass-ripple 400ms ease-out;

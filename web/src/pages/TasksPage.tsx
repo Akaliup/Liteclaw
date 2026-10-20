@@ -411,7 +411,7 @@ export function TasksPage() {
     <div className="min-h-full bg-background">
       <div className="mx-auto max-w-6xl p-4 sm:p-6">
         <PageHeader
-          title="定时任务管理"
+          title="运营任务"
           subtitle={`当前 ${liveTasks.length} · ${enabledTasks.length} 已启用 · ${pausedTasks.length} 已暂停 · ${liveRunCount} 执行中${retryingCount > 0 ? ` · ${retryingCount} 等待重试` : ''} · 回收站 ${deletedTasks.length}`}
           className="mb-5 flex-col !items-stretch [&>div:first-child]:w-full [&>div:last-child]:justify-end sm:flex-row sm:!items-center sm:[&>div:first-child]:w-auto"
           actions={

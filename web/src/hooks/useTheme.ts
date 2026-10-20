@@ -4,12 +4,12 @@ export type Theme = 'light' | 'dark' | 'system';
 export type ColorScheme = 'default' | 'orange' | 'neutral';
 export type FontStyle = 'default' | 'anthropic';
 
-const THEME_KEY = 'miniclaw-theme';
-const SCHEME_KEY = 'miniclaw-color-scheme';
-const FONT_KEY = 'miniclaw-font-style';
-const LEGACY_THEME_KEY = 'miniclaw-theme';
-const LEGACY_SCHEME_KEY = 'miniclaw-color-scheme';
-const LEGACY_FONT_KEY = 'miniclaw-font-style';
+const THEME_KEY = 'liteclaw-theme';
+const SCHEME_KEY = 'liteclaw-color-scheme';
+const FONT_KEY = 'liteclaw-font-style';
+const LEGACY_THEME_KEY = 'liteclaw-theme';
+const LEGACY_SCHEME_KEY = 'liteclaw-color-scheme';
+const LEGACY_FONT_KEY = 'liteclaw-font-style';
 const listeners = new Set<() => void>();
 
 function notify() { listeners.forEach((cb) => cb()); }

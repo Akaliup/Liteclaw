@@ -125,7 +125,7 @@ install_uv() {
 
 # ── Main ─────────────────────────────────────────────────────
 
-echo "=== Miniclaw Host Tools Installer ==="
+echo "=== LiteClaw Host Tools Installer ==="
 echo "    OS=$OS  ARCH=$ARCH"
 echo ""
 
@@ -141,4 +141,4 @@ install_uv
 
 echo ""
 echo "=== Done ==="
-echo "Restart Miniclaw to pick up the new tools."
+echo "Restart LiteClaw to pick up the new tools."

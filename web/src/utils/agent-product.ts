@@ -10,7 +10,7 @@ export interface AgentWorkspaceSection {
 }
 
 export function getAgentProfileDisplayName(name?: string | null): string {
-  return !name || name === 'Default Agent' ? 'Miniclaw' : name;
+  return !name || name === 'Default Agent' ? 'LiteClaw' : name;
 }
 
 export function getCustomAgentProfiles<T extends { is_default: boolean }>(

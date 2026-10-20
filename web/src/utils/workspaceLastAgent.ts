@@ -3,7 +3,7 @@
 // ChatView consults this map to auto-restore the previous tab.
 // Entries are cleared by `selectTab(null)` (explicit return to main).
 
-const STORAGE_KEY = 'miniclaw-workspace-last-agent';
+const STORAGE_KEY = 'liteclaw-workspace-last-agent';
 
 function safeStorage(): Storage | null {
   try {

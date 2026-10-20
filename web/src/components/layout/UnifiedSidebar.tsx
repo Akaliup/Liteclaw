@@ -234,7 +234,7 @@ export function UnifiedSidebar({
           <div className="w-11 h-11 rounded-xl overflow-hidden mb-3 flex-shrink-0">
             <img
               src={`${import.meta.env.BASE_URL}icons/icon-192.png`}
-              alt="Miniclaw"
+              alt="LiteClaw"
               className="w-full h-full object-cover"
             />
           </div>
@@ -260,7 +260,9 @@ export function UnifiedSidebar({
                         className="w-[20px] h-[20px]"
                         strokeWidth={isActive ? 2 : 1.75}
                       />
-                      <span className="text-[10px] leading-tight">{label}</span>
+                      <span className="text-[9px] leading-tight whitespace-nowrap">
+                        {label}
+                      </span>
                     </button>
                   ) : (
                     <NavLink to={path} className={cn(baseClass, activeClass)}>
@@ -268,15 +270,17 @@ export function UnifiedSidebar({
                         className="w-[20px] h-[20px]"
                         strokeWidth={isActive ? 2 : 1.75}
                       />
-                      <span className="text-[10px] leading-tight">{label}</span>
+                      <span className="text-[9px] leading-tight whitespace-nowrap">
+                        {label}
+                      </span>
                     </NavLink>
                   )}
                 </TooltipTrigger>
                 <TooltipContent side="right">
                   {isChatItem && isChatRoute
                     ? collapsed
-                      ? '展开智能体工作台'
-                      : '收起智能体工作台'
+                      ? '展开岗位工作台'
+                      : '收起岗位工作台'
                     : label}
                 </TooltipContent>
               </Tooltip>
@@ -342,11 +346,16 @@ export function UnifiedSidebar({
         >
           <div className="w-[16.5rem] h-full flex flex-col bg-muted/30">
             <div className="flex items-center gap-2 px-4 pt-6 pb-3 mb-3 flex-shrink-0">
-              <img
-                src={`${import.meta.env.BASE_URL}icons/logo-text.svg`}
-                alt={appearance?.appName || 'Miniclaw'}
-                className="h-10"
-              />
+              <div className="min-w-0">
+                <img
+                  src={`${import.meta.env.BASE_URL}icons/logo-text.svg`}
+                  alt={appearance?.appName || 'LiteClaw'}
+                  className="h-8"
+                />
+                <p className="mt-1 text-[10px] font-medium tracking-[0.14em] text-muted-foreground">
+                  跨境电商数字员工平台
+                </p>
+              </div>
               <div className="flex-1" />
               <button
                 onClick={onToggleCollapse}
@@ -430,7 +439,7 @@ export function UnifiedSidebar({
         onClose={closeClear}
         onConfirm={handleClearConfirm}
         title="重建工作区"
-        message={`确认重建「${clearState.name}」？会永久删除全部聊天记录、上下文、所有子对话及其消息、工作目录文件，以及该工作区的全部 Memory（含版本历史、遗忘记录和 Miniclaw 称呼偏好）；Home 还会重置首次唤醒状态。关联定时任务会停止并移入回收站，运行历史与持久化目录 (data/extra/) 保留。不可撤销。`}
+        message={`确认重建「${clearState.name}」？会永久删除全部聊天记录、上下文、所有子对话及其消息、工作目录文件，以及该工作区的全部 Memory（含版本历史、遗忘记录和 LiteClaw 称呼偏好）；Home 还会重置首次唤醒状态。关联定时任务会停止并移入回收站，运行历史与持久化目录 (data/extra/) 保留。不可撤销。`}
         confirmText="确认重建"
         confirmVariant="danger"
         loading={clearLoading}

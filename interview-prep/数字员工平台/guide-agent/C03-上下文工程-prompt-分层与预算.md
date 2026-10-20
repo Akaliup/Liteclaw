@@ -16,7 +16,7 @@
 
 一次运行里，进入模型的文本有三个来源，职责严格分开：
 
-1. **系统提示**：`container/agent-runner/prompts/*.md` 是文案真相源，`buildMiniclawPromptPlan` 只负责选块、排序、包 XML 标签，`createPromptPlan` 负责校验、估算与 hash。产物 `plan.text` 就是 `systemPrompt`。
+1. **系统提示**：`container/agent-runner/prompts/*.md` 是文案真相源，`buildLiteClawPromptPlan` 只负责选块、排序、包 XML 标签，`createPromptPlan` 负责校验、估算与 hash。产物 `plan.text` 就是 `systemPrompt`。
 2. **每轮上下文**：`runTurn` 里并行取 owner-profile 与 workspace memory 快照，再拼上 `ChannelTurnContext`，交给 Runtime 作为本轮 `prompt`。
 3. **能力与项目上下文**：Skills/CLAUDE.md/rules/MCP 由 `container-runner` 与 `claude-context-resolver` 投影成文件，不进 prompt 文本（C04 展开）。
 
@@ -39,12 +39,12 @@ export function createPromptPlan(inputs: PromptBlockInput[]): PromptPlan {
 
 这段说明三件事：空文本 block 在生成阶段就被丢弃（`loadPrompt` 读不到文件返回空串，等价于"这个块不存在"，不报错）；`text` 用单换行 `join`；阈值判断按整份计划估算，不按单块。`hash` 的算法是 `sha256(JSON.stringify(blocks.map(只取元数据 + 每块 hash)))`——计划 hash 不含 `text` 原文，正文变化通过各 block 的 `hash` 传导上去。
 
-`buildMiniclawPromptPlan` 的固定顺序为主 Agent 的十一个候选：`identity.miniclaw → bootstrap.miniclaw → agent-profile → interaction → security-rules → memory-system.workspace → agent-builder → output → web-fetch → background-tasks → channel.<id> → delivery-contract`。注意 `agent-profile` 块是唯一不包 XML 标签的（正文自带 `<agent-identity>` 外壳，由调用方拼），其余都经 `wrap()` 包成 `<platform-identity>`、`<behavior>`、`<security>`、`<memory-system>`、`<agent-builder>`、`<output-contract>`、`<web-access>`、`<background-tasks>`、`<channel-format>`、`<delivery-contract>`。
+`buildLiteClawPromptPlan` 的固定顺序为主 Agent 的十一个候选：`identity.liteclaw → bootstrap.liteclaw → agent-profile → interaction → security-rules → memory-system.workspace → agent-builder → output → web-fetch → background-tasks → channel.<id> → delivery-contract`。注意 `agent-profile` 块是唯一不包 XML 标签的（正文自带 `<agent-identity>` 外壳，由调用方拼），其余都经 `wrap()` 包成 `<platform-identity>`、`<behavior>`、`<security>`、`<memory-system>`、`<agent-builder>`、`<output-contract>`、`<web-access>`、`<background-tasks>`、`<channel-format>`、`<delivery-contract>`。
 
 **二、谁在什么条件下加块**（[pi-index.ts](../../../container/agent-runner/src/pi-index.ts) 的 `buildSystemPrompt`）
 
-- `identity.miniclaw`：仅 `agentProfile.isDefault`（内置 Miniclaw 身份）。
-- `bootstrap.miniclaw`：`isDefault && miniclawOwnerProfileEnabled`。
+- `identity.liteclaw`：仅 `agentProfile.isDefault`（内置 LiteClaw 身份）。
+- `bootstrap.liteclaw`：`isDefault && liteclawOwnerProfileEnabled`。
 - `agent-profile`：`identityPrompt` 非空才加，并把 `profile_id` 写进标签。
 - `interaction` / `security-rules`：无条件，`required: true`。
 - `memory-system.workspace`：**无条件传入**（是否真的出现取决于文件能否读到）。

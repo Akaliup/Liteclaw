@@ -124,8 +124,11 @@ export function AppLayout() {
   );
   const appearance = useAuthStore((s) => s.appearance);
   useEffect(() => {
-    const appName = appearance?.appName || 'Miniclaw';
-    document.title = totalUnread > 0 ? `(${totalUnread}) ${appName}` : appName;
+    const appName = appearance?.appName || 'LiteClaw';
+    document.title =
+      totalUnread > 0
+        ? `(${totalUnread}) ${appName} · 数字员工平台`
+        : `${appName} · 数字员工平台`;
   }, [totalUnread, appearance?.appName]);
 
   // 全局监听 agent_status，确保不在 ChatView 页面时也能更新 sub-agent 状态

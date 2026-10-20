@@ -196,7 +196,7 @@ describe('extractSessionHistory', () => {
     expect(result).toContain('<system_context>');
     expect(result).toContain('</system_context>');
     expect(result).toContain('[User] hello');
-    expect(result).toContain('[Miniclaw] hi');
+    expect(result).toContain('[LiteClaw] hi');
   });
 });
 

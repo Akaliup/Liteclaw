@@ -52,7 +52,7 @@ settingsManager.setCompactionEnabled(options.autoCompactEnabled !== false);
 
 未传或传真都开启，只有显式 `false` 才关。`pi-index.ts` 传的是常量 `true`，注释写明历史 Claude SDK 的 percentage/window 旋钮在 Pi 下只是 advisory，Pi 自己按剩余量算阈值。
 
-3. `ModelRuntime.create({ authPath: agentDir/auth.json, modelsPath: agentDir/models.json, refreshOnCreate: false })`，然后 `resolvePiProvider`（[pi-provider.ts](../../../container/agent-runner/src/runtime/pi/pi-provider.ts)）。三条分支值得记住：模型名里没有 `/` 时 provider 取 `anthropic`；自定义端点会被注册成一个独立 provider `miniclaw-<provider>`（`api: 'anthropic-messages'`、`contextWindow: 200_000`、`maxTokens: 32_000`、cost 全 0），这样 Pi 内置的 Anthropic 目录和凭据不受污染；官方端点只 `setRuntimeApiKey('anthropic', apiKey)`。`refreshOnCreate: false` 是为了不每次冷启动都打网络。
+3. `ModelRuntime.create({ authPath: agentDir/auth.json, modelsPath: agentDir/models.json, refreshOnCreate: false })`，然后 `resolvePiProvider`（[pi-provider.ts](../../../container/agent-runner/src/runtime/pi/pi-provider.ts)）。三条分支值得记住：模型名里没有 `/` 时 provider 取 `anthropic`；自定义端点会被注册成一个独立 provider `liteclaw-<provider>`（`api: 'anthropic-messages'`、`contextWindow: 200_000`、`maxTokens: 32_000`、cost 全 0），这样 Pi 内置的 Anthropic 目录和凭据不受污染；官方端点只 `setRuntimeApiKey('anthropic', apiKey)`。`refreshOnCreate: false` 是为了不每次冷启动都打网络。
 
 4. `DefaultResourceLoader`（`pi-runtime.ts:78`）吃四个来源：`systemPrompt`、`additionalSkillPaths`（`pi-index` 传 `CLAUDE_CONFIG_DIR/skills` 与 `WORKSPACE_GROUP/.claude/skills`，先用 `existsSync` 过滤）、`additionalExtensionPaths`、以及 `settingsManager` + `eventBus`。subagent 扩展由 `resolveSubagentsExtension()` 用 `require.resolve('@tintinweb/pi-subagents')` 解析后自动追加。
 
@@ -81,7 +81,7 @@ const toolAliases: Record<string, string> = {
 };
 ```
 
-白名单展开时 `mcp__miniclaw__*` 这一项展开成全部自定义工具名，其它项走别名映射，然后 `new Set` 去重，再过滤：核心工具只留 `read/bash/edit/write/find/grep/ls`，要么是自定义工具，要么是 `Agent` / `get_subagent_result` / `steer_subagent`。别名表存在的理由是产品 Prompt 与能力清单里写的是 Claude 工具名，Pi 里同能力不同名——尤其 `Task → Agent`。
+白名单展开时 `mcp__liteclaw__*` 这一项展开成全部自定义工具名，其它项走别名映射，然后 `new Set` 去重，再过滤：核心工具只留 `read/bash/edit/write/find/grep/ls`，要么是自定义工具，要么是 `Agent` / `get_subagent_result` / `steer_subagent`。别名表存在的理由是产品 Prompt 与能力清单里写的是 Claude 工具名，Pi 里同能力不同名——尤其 `Task → Agent`。
 
 8. `createAgentSession({ …, thinkingLevel: options.thinkingLevel === 'off' ? 'minimal' : options.thinkingLevel, tools: selectedTools, excludeTools, customTools, resourceLoader, sessionManager, settingsManager })`，返回值包成 `PiRuntimeSession(session, eventBus)`。`off → minimal` 是把「无思考」映射到 Pi 能表达的最低档。
 
@@ -104,7 +104,7 @@ finalizationReason:
 
 13. `publishResult`（`pi-runner.ts:246`）是幂等点：`completionPublished` 为真直接返回；否则 `tracker.completeNextTurn()` 取回本轮的 receipt 列表，发一帧 `status: inputTurnCompleted ? 'success' : 'error'` 的结果，带 `queryIdle: !tracker.hasPendingTurns`。若本轮健康完成且队列里还有后续 turn，它把 `completionPublished` 复位为 false 并 `onTurnActivated(...)`——同一个 SDK 查询继续为下一条输入产出结果帧。
 
-14. `adaptClaudeMcpToolsToPi`（[pi-tools.ts](../../../container/agent-runner/src/runtime/pi/pi-tools.ts)）：Zod raw shape → `z.toJSONSchema` → 删 `$schema` → `Type.Unsafe`；转换抛错时降级成 `Type.Object({})`，但 `prepareArguments` 仍在执行期用 `z.object(...).parse(args)` 校验。名字统一加 `mcp__miniclaw__` 前缀。
+14. `adaptClaudeMcpToolsToPi`（[pi-tools.ts](../../../container/agent-runner/src/runtime/pi/pi-tools.ts)）：Zod raw shape → `z.toJSONSchema` → 删 `$schema` → `Type.Unsafe`；转换抛错时降级成 `Type.Object({})`，但 `prepareArguments` 仍在执行期用 `z.object(...).parse(args)` 校验。名字统一加 `mcp__liteclaw__` 前缀。
 
 ## 机制与边界
 
@@ -122,7 +122,7 @@ finalizationReason:
 
 ## 需要懂什么
 
-适配层的价值不在「支持两个引擎」，而在「产品概念不进适配层」。`RuntimeSessionOptions` 里没有 `groupFolder`、没有 `chatJid`、没有 `channelContext`——那些是 Miniclaw 的东西，止步于 `pi-index`。适配层只看见 `cwd`、`sessionDir`、`model`、`systemPrompt`、工具名单、技能路径、provider 三件套。这条边界让 `runtime/types.ts` 的注释能成立：「产品协议刻意留在这个模块之外」。
+适配层的价值不在「支持两个引擎」，而在「产品概念不进适配层」。`RuntimeSessionOptions` 里没有 `groupFolder`、没有 `chatJid`、没有 `channelContext`——那些是 LiteClaw 的东西，止步于 `pi-index`。适配层只看见 `cwd`、`sessionDir`、`model`、`systemPrompt`、工具名单、技能路径、provider 三件套。这条边界让 `runtime/types.ts` 的注释能成立：「产品协议刻意留在这个模块之外」。
 
 降级为什么只降扩展、不降引擎。降引擎是最容易写、也最难查的故障：日志里一切正常，模型答得也不错，但工具名、上下文、会话续接全换了套逻辑，问题只在某个渠道的某个卡片上暴露。所以这里的策略是「保留选择、暴露失败」：`resolveSubagentsExtension()` 拿不到扩展就根本不进降级分支；拿到了但 reload 失败，只把这一项剔掉，让需要它的工具在执行期显式失败。
 

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { Loader2, Globe, Sparkles } from 'lucide-react';
 import { useAuthStore } from '../stores/auth';
 import { LogoLoading } from '../components/common/LogoLoading';
@@ -157,17 +157,23 @@ export function LoginPage() {
           <div className="w-9 h-9 rounded-xl overflow-hidden">
             <img
               src={`${import.meta.env.BASE_URL}icons/icon-192.png`}
-              alt="Miniclaw"
+              alt="LiteClaw"
               className="w-full h-full object-cover"
             />
           </div>
           <span className="text-lg font-semibold text-foreground tracking-tight">
-            Miniclaw
+            LiteClaw
           </span>
         </div>
         <div className="flex items-center gap-2">
+          <Link to="/demo">
+            <Button variant="secondary" size="sm">
+              <Sparkles className="size-4" />
+              <span className="hidden sm:inline">演示空间</span>
+            </Button>
+          </Link>
           <a
-            href="https://github.com/helsome/miniclaw"
+            href="https://github.com/helsome/liteclaw"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -188,41 +194,41 @@ export function LoginPage() {
             <div className="text-center lg:text-left">
               <div className="landing-badge">
                 <Sparkles className="size-3.5" />
-                <span>Powered by Pi Agent Runtime</span>
+                <span>跨境电商 · 多店铺协同运营</span>
               </div>
 
               <h1 className="mt-4 lg:mt-6 text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground tracking-tight leading-[1.1]">
-                你的私有
+                让每家店铺
                 <br />
-                <span className="landing-gradient-text">AI 智能体平台</span>
+                <span className="landing-gradient-text">都有一支数字员工团队</span>
               </h1>
 
               <p className="mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0">
-                自托管、多用户、多渠道 —— 让 Claude 成为你的全能数字助手。
-                在安全隔离的环境中，自主执行代码、管理文件、调度任务。
+                把客服、选品、广告运营组织成岗位 Agent，用工作区隔离不同店铺的数据与权限；
+                模型评测决定岗位适配，ProviderPool 保障每一次运行都有退路。
               </p>
 
               {/* Stats — hidden on small mobile to save space */}
               <div className="mt-6 lg:mt-8 hidden sm:flex items-center justify-center lg:justify-start gap-6 lg:gap-8">
                 <div>
                   <div className="text-xl lg:text-2xl font-bold text-foreground">
-                    5+
+                    300+
                   </div>
-                  <div className="text-xs text-muted-foreground">接入渠道</div>
+                  <div className="text-xs text-muted-foreground">业务评测用例</div>
                 </div>
                 <div className="w-px h-8 bg-border" />
                 <div>
                   <div className="text-xl lg:text-2xl font-bold text-foreground">
-                    Docker
+                    5 模型
                   </div>
-                  <div className="text-xs text-muted-foreground">安全隔离</div>
+                  <div className="text-xs text-muted-foreground">7 维横向评测</div>
                 </div>
                 <div className="w-px h-8 bg-border" />
                 <div>
                   <div className="text-xl lg:text-2xl font-bold text-foreground">
-                    24/7
+                    ProviderPool
                   </div>
-                  <div className="text-xs text-muted-foreground">自主运行</div>
+                  <div className="text-xs text-muted-foreground">自动降级切换</div>
                 </div>
               </div>
             </div>
@@ -235,7 +241,7 @@ export function LoginPage() {
                   <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-2xl overflow-hidden shadow-lg">
                     <img
                       src={`${import.meta.env.BASE_URL}icons/icon-192.png`}
-                      alt="Miniclaw"
+                      alt="LiteClaw"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -246,7 +252,7 @@ export function LoginPage() {
                 </h2>
                 <p className="text-muted-foreground text-xs lg:text-sm text-center mb-5 lg:mb-6">
                   {tab === 'login'
-                    ? '登录以继续使用 Miniclaw'
+                    ? '登录以继续使用 LiteClaw'
                     : regStatus.requireInviteCode
                       ? '需要邀请码才能注册'
                       : '创建你的账户'}

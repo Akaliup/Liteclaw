@@ -3,7 +3,7 @@
 const MAX_TOASTS = 5;
 let container: HTMLDivElement | null = null;
 const BACKGROUND_TASK_NOTICE_TTL_MS = 15_000;
-const OWNER_KEY = 'miniclaw:bg-task-notice-owner';
+const OWNER_KEY = 'liteclaw:bg-task-notice-owner';
 const OWNER_STALE_MS = 120_000;
 const TAB_ID = `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
 let ownerTrackingBound = false;
@@ -74,7 +74,7 @@ export function showToast(
     linkEl.rel = 'noopener noreferrer';
     linkEl.textContent = link.text;
     linkEl.style.cssText =
-      'display:inline-block;margin-top:6px;font-size:13px;color:#5eead4;' +
+      'display:inline-block;margin-top:6px;font-size:13px;color:#93b4fd;' +
       'text-decoration:underline;cursor:pointer;';
     el.appendChild(linkEl);
   }
@@ -163,7 +163,7 @@ export function showNotificationPromptToast(): void {
   btn.textContent = '开启';
   btn.style.cssText =
     'flex-shrink:0;padding:4px 10px;border-radius:5px;border:none;' +
-    'background:#5eead4;color:#0f172a;font-size:13px;font-weight:600;cursor:pointer;';
+    'background:#93b4fd;color:#0f172a;font-size:13px;font-weight:600;cursor:pointer;';
   btn.addEventListener('click', () => {
     Notification.requestPermission();
     dismiss();

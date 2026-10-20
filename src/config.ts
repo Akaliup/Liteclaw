@@ -11,9 +11,9 @@ const envWithLegacyAlias = (
 ): string => process.env[current] || process.env[legacy] || fallback;
 
 export const ASSISTANT_NAME = envWithLegacyAlias(
-  'MINICLAW_ASSISTANT_NAME',
+  'LITECLAW_ASSISTANT_NAME',
   'ASSISTANT_NAME',
-  'Miniclaw',
+  'LiteClaw',
 );
 export const POLL_INTERVAL = 2000;
 export const SCHEDULER_POLL_INTERVAL = 60000;
@@ -45,9 +45,9 @@ export const MAX_FILE_SIZE_MB =
 export const MAX_FILE_SIZE = MAX_FILE_SIZE_MB * 1024 * 1024;
 
 export const CONTAINER_IMAGE = envWithLegacyAlias(
-  'MINICLAW_CONTAINER_IMAGE',
+  'LITECLAW_CONTAINER_IMAGE',
   'CONTAINER_IMAGE',
-  'helsome/miniclaw-agent:latest',
+  'helsome/liteclaw-agent:latest',
 );
 // Timezone for scheduled tasks (cron expressions, etc.)
 // Uses TZ env var with Asia/Shanghai fallback
@@ -63,8 +63,8 @@ export const WEB_PORT = parseInt(process.env.WEB_PORT || '3000', 10);
 // When accessed over HTTPS: use __Host- prefix (requires Secure; Path=/; no Domain)
 // When accessed over HTTP (localhost dev or no TLS): use plain name
 // Determined per-request via isSecureRequest(), not at startup
-export const SESSION_COOKIE_NAME_SECURE = '__Host-miniclaw_session';
-export const SESSION_COOKIE_NAME_PLAIN = 'miniclaw_session';
+export const SESSION_COOKIE_NAME_SECURE = '__Host-liteclaw_session';
+export const SESSION_COOKIE_NAME_PLAIN = 'liteclaw_session';
 export const LEGACY_SESSION_COOKIE_NAME_SECURE = SESSION_COOKIE_NAME_SECURE;
 export const LEGACY_SESSION_COOKIE_NAME_PLAIN = SESSION_COOKIE_NAME_PLAIN;
 const SESSION_SECRET_FILE = path.join(DATA_DIR, 'config', 'session-secret.key');

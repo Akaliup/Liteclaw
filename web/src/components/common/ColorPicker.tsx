@@ -7,7 +7,7 @@ export interface ColorPickerProps {
 }
 
 const COLORS = [
-  '#0d9488', '#0ea5e9', '#6366f1', '#8b5cf6',
+  '#3064f4', '#0ea5e9', '#6366f1', '#8b5cf6',
   '#ec4899', '#f43f5e', '#ef4444', '#f97316',
   '#eab308', '#22c55e', '#14b8a6', '#64748b',
 ];

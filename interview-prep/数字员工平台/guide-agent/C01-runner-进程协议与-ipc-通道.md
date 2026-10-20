@@ -10,7 +10,7 @@
 
 四个结论：
 
-1. Runner 与宿主之间的硬协议只有两条：stdin 收一个 `ContainerInput` JSON，stdout 吐被 `---MINICLAW_OUTPUT_START---` / `---MINICLAW_OUTPUT_END---` 包裹的 `ContainerOutput` JSON 行。没有 socket、没有 RPC、没有回调注册。
+1. Runner 与宿主之间的硬协议只有两条：stdin 收一个 `ContainerInput` JSON，stdout 吐被 `---LITECLAW_OUTPUT_START---` / `---LITECLAW_OUTPUT_END---` 包裹的 `ContainerOutput` JSON 行。没有 socket、没有 RPC、没有回调注册。
 2. 进程起来之后，新消息一律走 IPC 目录（容器内 `/workspace/ipc/input`，宿主模式 `data/ipc/{folder}/input`），落成 `*.json` 文件；控制面用三个空文件当哨兵。
 3. 每条输出都盖 `inputTurnId`。轮内并发（用户边跑边追加）让「这段输出属于哪句输入」变成必须显式携带的事实，`activeInputTurnId` 是 Runner 侧唯一事实源。
 4. 退出有三种语义（closed / interrupted / error），宿主对三者的处理路径不同：只有 `closed` 会把 `hasClosedOutput` 置真，`error` 会把 `process.exitCode` 置 1。

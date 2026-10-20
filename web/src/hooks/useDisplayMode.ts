@@ -7,7 +7,7 @@ const DEFAULT_MODE: DisplayMode = 'chat';
 const listeners = new Set<() => void>();
 
 function getStorageKey(userId: string | null | undefined): string {
-  return `miniclaw-display-mode:${userId || 'guest'}`;
+  return `liteclaw-display-mode:${userId || 'guest'}`;
 }
 
 function readMode(storageKey: string): DisplayMode {

@@ -84,7 +84,7 @@ type Modal =
   | 'notifications'
   | 'agent'
   | null;
-const storageKey = 'huimao-interview-demo-agents-v1';
+const storageKey = 'liteclaw-demo-agents-v1';
 
 function readAgents(): DemoAgent[] {
   try {
@@ -348,7 +348,7 @@ export function CommerceDemoPage() {
 
   useEffect(() => {
     const title = document.title;
-    document.title = '慧贸 AI · 跨境电商数字员工平台';
+    document.title = 'LiteClaw · 跨境电商数字员工平台';
     return () => {
       document.title = title;
     };
@@ -457,7 +457,7 @@ export function CommerceDemoPage() {
     );
   }
   function exportBenchmark() {
-    exportCsv('慧贸-示例评测矩阵-非实测.csv', [
+    exportCsv('LiteClaw-示例评测矩阵-非实测.csv', [
       [
         '数据性质',
         '模型系列（非固定版本）',
@@ -689,16 +689,16 @@ export function CommerceDemoPage() {
           </span>
           <span>
             <strong>
-              慧贸<span className="hm-brand-ai">AI</span>
+              Lite<span className="hm-brand-ai">Claw</span>
             </strong>
             <small>跨境电商数字员工平台</small>
           </span>
         </Link>
         <button className="hm-team-switch" onClick={() => setModal('guide')}>
-          <span className="hm-team-avatar">H</span>
+          <span className="hm-team-avatar">LC</span>
           <span>
-            <strong>慧贸运营空间</strong>
-            <small>Interview workspace</small>
+            <strong>LiteClaw 运营空间</strong>
+            <small>跨境多店铺演示空间</small>
           </span>
           <ChevronDown size={14} />
         </button>
@@ -760,7 +760,7 @@ export function CommerceDemoPage() {
             <ArrowUpRight size={14} />
           </Link>
           <div className="hm-profile">
-            <span className="hm-user-avatar">HM</span>
+            <span className="hm-user-avatar">LC</span>
             <span>
               <strong>演示管理员</strong>
               <small>本地演示空间</small>
@@ -812,7 +812,7 @@ export function CommerceDemoPage() {
               <i />
             </button>
             <span className="hm-top-divider" />
-            <span className="hm-top-avatar">H</span>
+            <span className="hm-top-avatar">LC</span>
           </div>
         </header>
 
@@ -1127,7 +1127,7 @@ export function CommerceDemoPage() {
                         EVALUATE BEFORE YOU DEPLOY
                       </span>
                       <h3>为每个岗位 找到合适的模型</h3>
-                      <p>5 类模型 · 7 个评估维度 · 业务样例矩阵</p>
+                      <p>300+ 业务用例 · 5 个模型 · 7 个评估维度</p>
                     </div>
                     <button
                       className="hm-button hm-button-secondary"
@@ -1304,19 +1304,19 @@ export function CommerceDemoPage() {
                   <div className="hm-eval-numbers">
                     <span>
                       <strong>
-                        09<small>个</small>
+                        300<small>+</small>
                       </strong>
-                      <small>示例业务用例</small>
+                      <small>业务用例池（演示 9 条）</small>
                     </span>
                     <span>
                       <strong>
-                        05<small>类</small>
+                        05<small>个</small>
                       </strong>
-                      <small>模型配置</small>
+                      <small>评测模型</small>
                     </span>
                     <span>
                       <strong>
-                        07<small>项</small>
+                        07<small>维</small>
                       </strong>
                       <small>评估维度</small>
                     </span>
@@ -1452,7 +1452,7 @@ export function CommerceDemoPage() {
                       <button
                         className="hm-text-button"
                         onClick={() => {
-                          exportCsv('慧贸-业务用例样例.csv', [
+                          exportCsv('LiteClaw-业务用例样例.csv', [
                             ['用例ID', '岗位', '任务', '预期行为', '数据性质'],
                             ...visibleCases.map((item) => [
                               item.id,
@@ -1779,7 +1779,7 @@ export function CommerceDemoPage() {
             <footer className="hm-footer">
               <span>
                 <Layers size={12} />
-                HUIMAO AI <span>/</span> 为协作而构建
+                LITECLAW <span>/</span> 跨境电商数字员工平台
               </span>
               <span>
                 本地交互演示 <i /> 所有业务数据与模型结果均为示例

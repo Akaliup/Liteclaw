@@ -104,7 +104,7 @@ function enable(opts: {
 }
 
 beforeEach(() => {
-  tmpDataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'miniclaw-cmd-index-'));
+  tmpDataDir = fs.mkdtempSync(path.join(os.tmpdir(), 'liteclaw-cmd-index-'));
   _resetCommandIndexCacheForTests();
 });
 

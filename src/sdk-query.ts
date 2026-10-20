@@ -38,9 +38,9 @@ async function resolveModel(
   if (custom) {
     if (!modelRef) throw new Error('Custom provider requires a model');
     const split = splitModelRef(modelRef);
-    const providerId = `miniclaw-${split.providerId}`;
+    const providerId = `liteclaw-${split.providerId}`;
     runtime.registerProvider(providerId, {
-      name: `Miniclaw ${split.providerId} compatible provider`,
+      name: `LiteClaw ${split.providerId} compatible provider`,
       baseUrl: config.anthropicBaseUrl.trim(),
       api: 'anthropic-messages',
       ...(config.anthropicApiKey || config.anthropicAuthToken

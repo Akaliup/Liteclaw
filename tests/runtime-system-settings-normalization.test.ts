@@ -12,7 +12,7 @@ process.env.MAX_CONCURRENT_CONTAINERS = '999';
 process.env.ADMIN_HOST_ONLY_MODE = 'true';
 
 vi.mock('../src/config.js', () => ({
-  ASSISTANT_NAME: 'Miniclaw',
+  ASSISTANT_NAME: 'LiteClaw',
   DATA_DIR: tmpDir,
 }));
 

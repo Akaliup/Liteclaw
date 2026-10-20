@@ -45,7 +45,7 @@ const SCHEME_OPTIONS: {
   {
     value: 'default',
     label: '经典绿',
-    preview: { bg: '#f8fafc', accent: '#0d9488', text: '#0f172a' },
+    preview: { bg: '#f8fafc', accent: '#3064f4', text: '#0f172a' },
   },
   {
     value: 'orange',
@@ -67,7 +67,7 @@ const FONT_OPTIONS: {
 }[] = [
   {
     value: 'default',
-    label: 'Miniclaw',
+    label: 'LiteClaw',
     sample: 'Hello 你好',
     fontFamily: "'Inter Variable', system-ui, sans-serif",
   },

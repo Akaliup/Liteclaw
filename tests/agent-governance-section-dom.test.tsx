@@ -88,15 +88,15 @@ describe('Agent governance isolation UI', () => {
     expect(container?.textContent).toContain('非 Home 工作区');
   });
 
-  test('shows Home as fixed to Miniclaw and offers no migration control', async () => {
-    const miniclaw = {
+  test('shows Home as fixed to LiteClaw and offers no migration control', async () => {
+    const liteclaw = {
       ...baseProfile,
-      id: 'miniclaw',
-      name: 'Miniclaw',
+      id: 'liteclaw',
+      name: 'LiteClaw',
       is_default: true,
     };
-    await render(miniclaw, {
-      profile: miniclaw,
+    await render(liteclaw, {
+      profile: liteclaw,
       workspaces: [
         {
           jid: 'web:main',
@@ -111,7 +111,7 @@ describe('Agent governance isolation UI', () => {
       channel_mounts: [],
     });
 
-    expect(container?.textContent).toContain('Home · 固定归属 Miniclaw');
+    expect(container?.textContent).toContain('Home · 固定归属 LiteClaw');
     expect(
       container?.querySelector('[aria-label="迁移工作区 Home"]'),
     ).toBeNull();
