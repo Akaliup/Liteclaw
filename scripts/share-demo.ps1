@@ -1,4 +1,4 @@
-#requires -Version 5.1
+﻿#requires -Version 5.1
 <#
 .SYNOPSIS
   一键把 LiteClaw 演示空间跑起来并（可选）开一个公网地址，供面试现场使用。

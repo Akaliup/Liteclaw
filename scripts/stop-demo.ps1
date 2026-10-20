@@ -1,4 +1,4 @@
-#requires -Version 5.1
+﻿#requires -Version 5.1
 <#
 .SYNOPSIS
   关闭 LiteClaw 本地演示：杀掉指定端口上的监听进程（默认 5400 演示、3000 后端）以及隧道进程。
@@ -55,5 +55,6 @@ if ($stopped -eq 0) { Write-Host '没有需要停止的进程。' -ForegroundCol
 Start-Sleep -Milliseconds 500
 foreach ($port in $Ports) {
   $left = Get-NetTCPConnection -LocalPort $port -State Listen -ErrorAction SilentlyContinue
-  Write-Host ("端口 {0}：{1}" -f $port, $(if ($left) { '仍在监听' } else { '已释放' })) -ForegroundColor DarkGray
+  $state = if ($left) { '仍在监听' } else { '已释放' }
+  Write-Host ("端口 {0}：{1}" -f $port, $state) -ForegroundColor DarkGray
 }
