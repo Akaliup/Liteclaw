@@ -46,23 +46,23 @@ test('create a scoped employee, persist it and inspect its independent workspace
   await page.goto('/demo/agents');
   await page.getByRole('button', { name: '创建数字员工', exact: true }).click();
   const dialog = page.getByRole('dialog');
-  await dialog.getByLabel('员工名称').fill('面试演示客服');
+  await dialog.getByLabel('员工名称').fill('测试客服');
   await dialog.getByLabel('店铺工作区').selectOption('mori');
   await dialog.getByRole('button', { name: '创建演示员工' }).click();
   await expect(
-    page.getByRole('heading', { name: '面试演示客服', exact: true }),
+    page.getByRole('heading', { name: '测试客服', exact: true }),
   ).toBeVisible();
   await page.reload();
   await expect(
-    page.getByRole('heading', { name: '面试演示客服', exact: true }),
+    page.getByRole('heading', { name: '测试客服', exact: true }),
   ).toBeVisible();
   await page.getByLabel('选择店铺').selectOption('northstar');
   await expect(
-    page.getByRole('heading', { name: '面试演示客服', exact: true }),
+    page.getByRole('heading', { name: '测试客服', exact: true }),
   ).toHaveCount(0);
   await page.getByLabel('选择店铺').selectOption('mori');
   await expect(
-    page.getByRole('heading', { name: '面试演示客服', exact: true }),
+    page.getByRole('heading', { name: '测试客服', exact: true }),
   ).toBeVisible();
   await page.getByRole('link', { name: '店铺工作区', exact: true }).click();
   await expect(
@@ -73,7 +73,7 @@ test('create a scoped employee, persist it and inspect its independent workspace
     .getByRole('button', { name: '查看 MORI 森物 客服专员 工作区' })
     .last()
     .click();
-  await expect(dialog.getByText('面试演示客服', { exact: true })).toBeVisible();
+  await expect(dialog.getByText('测试客服', { exact: true })).toBeVisible();
   await expect(dialog.locator('code')).toContainText('demo/mori/');
   await page.keyboard.press('Escape');
   await expect(dialog).not.toBeVisible();

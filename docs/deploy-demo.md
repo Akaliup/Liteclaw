@@ -1,4 +1,4 @@
-# 演示空间部署指南（给面试官一个地址）
+# 演示空间部署指南
 
 演示空间 `/demo` 是**纯前端**：不调用后端、不需要模型密钥、不需要电商平台授权。
 因此可以托管在任何静态站点上，也可以临时开隧道。
@@ -48,7 +48,7 @@ npx vercel --cwd web --prod
 
 ## 方案 D：临时公网隧道（今天就要地址）
 
-本机跑起来，再把隧道地址给面试官：
+在本机启动服务，通过临时隧道分享访问地址：
 
 ```powershell
 # 首次：安装 cloudflared
@@ -59,16 +59,16 @@ powershell -ExecutionPolicy Bypass -File scripts\share-demo.ps1
 ```
 
 `cloudflared tunnel --url http://127.0.0.1:5400` 会打印一个 `https://xxx.trycloudflare.com` 地址，
-把它拼成 `https://xxx.trycloudflare.com/demo` 发给面试官即可。
+把它拼成 `https://xxx.trycloudflare.com/demo` 分享即可。
 
 要点：
 
-- 面试期间**别关窗口、别让电脑休眠**；隧道一断地址就失效。
+- 服务运行期间**保持终端开启，并关闭电脑自动休眠**；隧道一断地址就失效。
 - 这台机器 5173 / 5181 / 7800 等端口被系统或安全软件占用（`EACCES`），脚本默认用 **5400**；
   若 5400 也被占，加 `-Port 13000`。
 - 隧道地址是随机的，拿到后先自己用手机 4G 打开验证一次。
 
-## 面试前 10 分钟检查清单
+## 部署验证
 
 ```powershell
 npm --prefix web run dev -- --port 5400 --host 127.0.0.1

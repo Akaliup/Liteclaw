@@ -1,7 +1,7 @@
 ﻿#requires -Version 5.1
 <#
 .SYNOPSIS
-  一键把 LiteClaw 演示空间跑起来并（可选）开一个公网地址，供面试现场使用。
+  一键把 LiteClaw 演示空间跑起来并（可选）开一个公网地址，用于远程访问。
 
 .EXAMPLE
   powershell -ExecutionPolicy Bypass -File scripts\share-demo.ps1
@@ -46,7 +46,7 @@ try {
   }
 
   if (Get-Command cloudflared -ErrorAction SilentlyContinue) {
-    Write-Host '正在建立 Cloudflare 临时隧道（TryCloudflare），把下面的 https 地址发给面试官…' -ForegroundColor Cyan
+    Write-Host '正在建立 Cloudflare 临时隧道（TryCloudflare），使用下面的 https 地址访问…' -ForegroundColor Cyan
     cloudflared tunnel --url "http://127.0.0.1:$Port"
   }
   elseif (Get-Command ngrok -ErrorAction SilentlyContinue) {
@@ -58,7 +58,7 @@ try {
     Write-Host '  winget install --id Cloudflare.cloudflared -e'
     Write-Host '  winget install --id Ngrok.Ngrok -e'
     Write-Host ''
-    Write-Host '只想本机演示（面试官看共享屏幕）时：' -ForegroundColor DarkGray
+    Write-Host '仅在本机访问时：' -ForegroundColor DarkGray
     Write-Host "  http://127.0.0.1:$Port/demo"
   }
 }
