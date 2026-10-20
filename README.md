@@ -1,4 +1,4 @@
-# LiteClaw
+LiteClaw
 
 <p align="center">
   <img src="web/public/icons/logo-1024.png" alt="LiteClaw logo" width="96" />
@@ -35,20 +35,12 @@ LiteClaw 采用本地优先和显式集成的思路：数据库、工作区元�
 
 工作台围绕 `Agent → Workspace → Runtime Session` 组织信息。左侧导航提供工作台、智能体、能力库、任务、用量、账单和设置入口；进入工作台后，可以在同一个界面中切换 Agent、Workspace 和对话上下文。
 
-下面是当前桌面端工作台的实际界面：
-
-<p align="center">
-  <img src="docs/screenshots/workbench.png" alt="LiteClaw 智能体工作台" width="900" />
-</p>
 
 <p align="center">
   <em>工作台：在同一个窗口中管理 Agent、Workspace、Session 与对话。</em>
 </p>
 
-<p align="center">
-  <img src="docs/screenshots/capabilities.png" alt="LiteClaw 能力库" width="49%" />
-  <img src="docs/screenshots/settings-models.png" alt="LiteClaw 模型配置" width="49%" />
-</p>
+
 
 <p align="center">
   <em>能力库与模型配置：把 Skills、MCP、Plugins 和 Provider 配置放在清晰的管理边界内。</em>
@@ -168,7 +160,7 @@ Web Client / Electron Desktop / Message Channels
 ### 启动 Backend 与 Web Client
 
 ```bash
-git clone https://github.com/helsome/liteclaw.git
+git clone https://github.com/akaliup/liteclaw.git
 cd liteclaw
 
 npm install
@@ -329,3 +321,5 @@ npm run desktop:build
 ## License
 
 LiteClaw 使用 MIT License，详见 [`LICENSE`](LICENSE)。
+#   L i t e c l a w  
+ 
