@@ -150,6 +150,14 @@ Web Client / Electron Desktop / Message Channels
 不证明历史交付、实际评测结果或生产业务收益。新建员工仅保存在当前浏览器。
 真实工作台仍通过 `/chat` 访问，继续使用现有登录与权限校验。
 
+需要把演示地址发给别人（面试、评审、客户）时，见 [部署指南](docs/deploy-demo.md)：
+
+- GitHub Pages（永久地址，已内置 workflow）、Netlify / Cloudflare Pages 拖拽、Vercel CLI。
+- 临时公网隧道：`powershell -ExecutionPolicy Bypass -File scripts\share-demo.ps1`。
+- 静态备份：[`docs/LiteClaw-demo.pdf`](docs/LiteClaw-demo.pdf) 与 [`docs/screenshots/liteclaw/`](docs/screenshots/liteclaw/)。
+
+> 这台开发机 5173 端口被系统保留段占用会报 `EACCES`，改端口即可：`npm --prefix web run dev -- --port 5400`。
+
 ### 环境要求
 
 - Node.js 20 或更高版本
