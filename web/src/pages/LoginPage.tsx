@@ -198,9 +198,9 @@ export function LoginPage() {
               </div>
 
               <h1 className="mt-4 lg:mt-6 text-3xl sm:text-4xl lg:text-6xl font-bold text-foreground tracking-tight leading-[1.1]">
-                让每家店铺
+                每家店铺
                 <br />
-                <span className="landing-gradient-text">都有一支数字员工团队</span>
+                <span className="landing-gradient-text">一支数字员工团队</span>
               </h1>
 
               <p className="mt-4 lg:mt-6 text-sm sm:text-base lg:text-lg text-muted-foreground leading-relaxed max-w-lg mx-auto lg:mx-0">

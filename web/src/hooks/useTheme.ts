@@ -31,12 +31,12 @@ function readTheme(): Theme {
 }
 
 function readColorScheme(): ColorScheme {
-  if (typeof window === 'undefined') return 'orange';
+  if (typeof window === 'undefined') return 'default';
   const stored =
     window.localStorage.getItem(SCHEME_KEY) ??
     window.localStorage.getItem(LEGACY_SCHEME_KEY);
   if (stored === 'default' || stored === 'orange' || stored === 'neutral') return stored;
-  return 'orange';
+  return 'default';
 }
 
 function readFontStyle(): FontStyle {
@@ -62,7 +62,7 @@ function syncMetaThemeColor() {
   if (isDark) {
     meta.setAttribute('content', isNeutral ? '#09090b' : '#0f172a');
   } else {
-    meta.setAttribute('content', isOrange ? '#FAF9F5' : isNeutral ? '#ffffff' : '#ffffff');
+    meta.setAttribute('content', isOrange ? '#FAF9F5' : isNeutral ? '#ffffff' : '#3064f4');
   }
 }
 
@@ -91,7 +91,7 @@ function subscribe(cb: () => void) {
 
 export function useTheme() {
   const theme = useSyncExternalStore(subscribe, readTheme, () => 'light' as Theme);
-  const colorScheme = useSyncExternalStore(subscribe, readColorScheme, () => 'orange' as ColorScheme);
+  const colorScheme = useSyncExternalStore(subscribe, readColorScheme, () => 'default' as ColorScheme);
   const fontStyle = useSyncExternalStore(subscribe, readFontStyle, () => 'default' as FontStyle);
 
   useEffect(() => { applyTheme(theme); }, [theme]);
@@ -115,7 +115,7 @@ export function useTheme() {
   }, []);
 
   const setColorScheme = useCallback((s: ColorScheme) => {
-    if (s === 'orange') window.localStorage.removeItem(SCHEME_KEY);
+    if (s === 'default') window.localStorage.removeItem(SCHEME_KEY);
     else window.localStorage.setItem(SCHEME_KEY, s);
     applyColorScheme(s);
     notify();

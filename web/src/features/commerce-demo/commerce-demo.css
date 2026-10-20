@@ -109,9 +109,9 @@
 }
 .hm-brand-ai {
   color: var(--hm-blue);
-  font-size: 17px;
-  margin-left: 7px;
-  letter-spacing: -0.04em;
+  font-size: inherit;
+  margin-left: 0;
+  letter-spacing: inherit;
 }
 .hm-brand small {
   color: #9297a3;

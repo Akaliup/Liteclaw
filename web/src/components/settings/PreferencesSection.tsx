@@ -44,7 +44,7 @@ const SCHEME_OPTIONS: {
 }[] = [
   {
     value: 'default',
-    label: '经典绿',
+    label: 'LiteClaw 蓝',
     preview: { bg: '#f8fafc', accent: '#3064f4', text: '#0f172a' },
   },
   {
