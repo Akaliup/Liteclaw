@@ -55,12 +55,12 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/helsome/liteclaw.git",
+    "url": "git+https://github.com/Akaliup/Liteclaw.git",
     "directory": "web"
   },
-  "homepage": "https://github.com/helsome/liteclaw#readme",
+  "homepage": "https://github.com/Akaliup/Liteclaw#readme",
   "bugs": {
-    "url": "https://github.com/helsome/liteclaw/issues"
+    "url": "https://github.com/Akaliup/Liteclaw/issues"
   },
   "author": "helson"
 }

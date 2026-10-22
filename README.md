@@ -10,13 +10,19 @@ LiteClaw
 </p>
 
 <p align="center">
-  <a href="https://github.com/helsome/liteclaw">GitHub</a> ·
+  <a href="https://github.com/Akaliup/Liteclaw">GitHub</a> ·
   <a href="docs/API.md">API</a> ·
   <a href="docs/ACL-MATRIX.md">权限模型</a> ·
   <a href="SECURITY.md">安全策略</a>
 </p>
 
 > 一句话：聊天界面让你向 Agent 提问；LiteClaw 让 Agent 拥有长期运行的店铺工作区、可审计的能力边界、可横向比较的模型评测，以及能够被 Web、桌面端和消息渠道共同使用的运行时。
+
+## 项目说明
+
+本仓库是面向跨境电商场景的个人复现与二次开发项目，用于学习、功能验证和作品展示，不作为实习公司项目交付或生产使用效果的证明。演示数据为模拟数据，不能作为真实业务收益或模型实测结果。
+
+项目基于既有开源代码与 Pi Agent Runtime 等组件，来源沿革见 [迁移记录](docs/liteclaw-migration-cleanup.md)。保留原有许可证与第三方声明；仓库功能清单不代表全部由个人原创实现。
 
 ## 产品定位
 
@@ -135,7 +141,7 @@ Web Client / Electron Desktop / Message Channels
 - 运营总览：多店铺筛选、任务趋势与岗位入口。
 - 数字员工：创建浏览器本地配置、查看四段 Prompt、回放预置业务任务。
 - 店铺工作区：展示店铺与岗位绑定、独立文件及会话归属。
-- 模型评测：300+ 业务用例池（演示展示 9 条样例）、5 个模型 × 7 维矩阵、岗位适配建议及 CSV 导出。
+- 模型评测演示：业务用例样例、预置评分矩阵、岗位适配展示及 CSV 导出，不代表真实模型实测。
 - 运行保障：回放 Provider 异常、健康隔离、备用选择和故障切换时间线。
 
 所有业务指标、模型评分、成本与任务结果均为演示数据，不调用模型或电商 API，

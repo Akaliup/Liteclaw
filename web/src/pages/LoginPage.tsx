@@ -173,7 +173,7 @@ export function LoginPage() {
             </Button>
           </Link>
           <a
-            href="https://github.com/helsome/liteclaw"
+            href="https://github.com/Akaliup/Liteclaw"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -212,16 +212,16 @@ export function LoginPage() {
               <div className="mt-6 lg:mt-8 hidden sm:flex items-center justify-center lg:justify-start gap-6 lg:gap-8">
                 <div>
                   <div className="text-xl lg:text-2xl font-bold text-foreground">
-                    300+
+                    样例
                   </div>
-                  <div className="text-xs text-muted-foreground">业务评测用例</div>
+                  <div className="text-xs text-muted-foreground">模拟业务用例</div>
                 </div>
                 <div className="w-px h-8 bg-border" />
                 <div>
                   <div className="text-xl lg:text-2xl font-bold text-foreground">
-                    5 模型
+                    多模型
                   </div>
-                  <div className="text-xs text-muted-foreground">7 维横向评测</div>
+                  <div className="text-xs text-muted-foreground">预置评分演示</div>
                 </div>
                 <div className="w-px h-8 bg-border" />
                 <div>

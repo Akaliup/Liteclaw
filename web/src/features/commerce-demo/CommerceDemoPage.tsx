@@ -1127,7 +1127,7 @@ export function CommerceDemoPage() {
                         EVALUATE BEFORE YOU DEPLOY
                       </span>
                       <h3>为每个岗位 找到合适的模型</h3>
-                      <p>300+ 业务用例 · 5 个模型 · 7 个评估维度</p>
+                      <p>个人复现 · 业务样例与预置评分演示</p>
                     </div>
                     <button
                       className="hm-button hm-button-secondary"
@@ -1304,19 +1304,19 @@ export function CommerceDemoPage() {
                   <div className="hm-eval-numbers">
                     <span>
                       <strong>
-                        300<small>+</small>
+                        样例
                       </strong>
-                      <small>业务用例池（演示 9 条）</small>
+                      <small>模拟业务用例</small>
                     </span>
                     <span>
                       <strong>
-                        05<small>个</small>
+                        预置
                       </strong>
-                      <small>评测模型</small>
+                      <small>模型评分演示</small>
                     </span>
                     <span>
                       <strong>
-                        07<small>维</small>
+                        多维
                       </strong>
                       <small>评估维度</small>
                     </span>

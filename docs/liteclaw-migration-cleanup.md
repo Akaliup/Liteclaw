@@ -1,6 +1,6 @@
 # LiteClaw 品牌清理记录
 
-本文记录 LiteClaw 独立品牌清理时发现的旧项目引用、处理范围和有意保留的第三方引用。除本记录的审计词表外，公开项目身份统一使用 LiteClaw 与 `https://github.com/helsome/liteclaw`。
+本文记录 LiteClaw 独立品牌清理时发现的旧项目引用、处理范围和有意保留的第三方引用。除本记录的审计词表外，当前个人复现仓库地址为 `https://github.com/Akaliup/Liteclaw`。历史记录中的上游地址仅用于说明代码来源，不代表当前仓库归属。
 
 ## 清理规则
 
@@ -34,3 +34,7 @@ npm run typecheck
 npm run desktop:typecheck
 npm test -- --run
 ```
+
+## 个人复现仓库说明
+
+当前仓库用于个人复现与二次开发展示，保留历史来源记录。既有文档记录的来源包括 `riba2534/happyclaw` 与 `helsome/liteclaw`；运行时复用 Pi Agent Runtime。个人新增或修改部分应以实际提交与代码差异为准，不将继承的功能全部声明为个人原创。

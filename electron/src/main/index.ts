@@ -279,7 +279,7 @@ function createApplicationMenu(): void {
     {
       label: 'Help',
       submenu: [
-        { label: 'LiteClaw on GitHub', click: () => void openExternalUrl('https://github.com/helsome/liteclaw') },
+        { label: 'LiteClaw on GitHub', click: () => void openExternalUrl('https://github.com/Akaliup/Liteclaw') },
       ],
     },
   ];

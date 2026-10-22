@@ -385,7 +385,7 @@ export function BugReportDialog({ open, onClose }: BugReportDialogProps) {
             <p className="text-sm text-foreground">
               将以 <span className="font-semibold text-foreground">{caps?.ghUsername || 'GitHub'}</span> 的身份提交 Issue 到
             </p>
-            <p className="text-sm text-muted-foreground">helsome/liteclaw</p>
+            <p className="text-sm text-muted-foreground">Akaliup/Liteclaw</p>
           </div>
         )}
 
